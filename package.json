@@ -7,6 +7,9 @@
     "test": "node test.js",
     "lint": "echo 'Linting passed ✅'"
   },
+  "dependencies": {
+    "jsdom": "^22.1.0"
+  },
   "keywords": ["cicd", "demo", "counter"],
   "author": "CI/CD Demo",
   "license": "MIT"
