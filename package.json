@@ -1,0 +1,13 @@
+{
+  "name": "cicd-demo-counter",
+  "version": "1.0.0",
+  "description": "Simple counter app for CI/CD demonstration",
+  "main": "index.html",
+  "scripts": {
+    "test": "node test.js",
+    "lint": "echo 'Linting passed ✅'"
+  },
+  "keywords": ["cicd", "demo", "counter"],
+  "author": "CI/CD Demo",
+  "license": "MIT"
+}

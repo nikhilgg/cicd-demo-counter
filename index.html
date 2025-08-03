@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Demo Counter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .counter-display {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 30px 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .increment {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .increment:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .decrement {
+            background: #f44336;
+            color: white;
+        }
+        
+        .decrement:hover {
+            background: #da190b;
+            transform: translateY(-2px);
+        }
+        
+        .reset {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .reset:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+        }
+        
+        .version {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 CI/CD Demo Counter</h1>
+        <div class="counter-display" id="counter">0</div>
+        <div class="buttons">
+            <button class="decrement" onclick="decrement()">➖ Decrease</button>
+            <button class="reset" onclick="reset()">🔄 Reset</button>
+            <button class="increment" onclick="increment()">➕ Increase</button>
+        </div>
+    </div>
+    
+    <div class="version">v1.0.0</div>
+    
+    <script>
+        let counter = 0;
+        
+        function updateDisplay() {
+            document.getElementById('counter').textContent = counter;
+        }
+        
+        function increment() {
+            counter++;
+            updateDisplay();
+        }
+        
+        function decrement() {
+            counter--;
+            updateDisplay();
+        }
+        
+        function reset() {
+            counter = 0;
+            updateDisplay();
+        }
+        
+        // Simple test function
+        function runTests() {
+            console.log('Running basic tests...');
+            
+            // Test increment
+            const originalCounter = counter;
+            increment();
+            if (counter !== originalCounter + 1) {
+                throw new Error('Increment test failed');
+            }
+            
+            // Test decrement
+            decrement();
+            if (counter !== originalCounter) {
+                throw new Error('Decrement test failed');
+            }
+            
+            // Test reset
+            reset();
+            if (counter !== 0) {
+                throw new Error('Reset test failed');
+            }
+            
+            console.log('All tests passed! ✅');
+            return true;
+        }
+        
+        // Run tests on page load
+        window.addEventListener('load', runTests);
+    </script>
+</body>
+</html>
